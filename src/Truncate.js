@@ -169,7 +169,7 @@ export default class Truncate extends React.Component {
     const targetWidth =
       width ||
       // Floor the result to deal with browser subpixel precision
-      Math.floor(target.parentNode.getBoundingClientRect().width);
+      Math.floor(target.parentNode.getBoundingClientRect().width - 10);
 
     // Delay calculation until parent node is inserted to the document
     // Mounting order in React is ChildComponent, ParentComponent
@@ -366,6 +366,8 @@ export default class Truncate extends React.Component {
     let text;
 
     const mounted = !!(target && targetWidth);
+
+    console.log(targetWidth);
 
     if (typeof window !== "undefined" && mounted) {
       if (lines > 0) {
